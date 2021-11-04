@@ -22,6 +22,7 @@ variable "networking_deployment_cidr" {
 variable "preferred_availability_zones" {
   description = "Support deployment on multiple availability zones within the selected region"
   type        = list(string)
+  default     = [""]
 }
 
 variable "database_name" {
@@ -32,6 +33,7 @@ variable "database_name" {
 variable "database_protocol" {
   description = "The protocol that will be used to access the database"
   type        = string
+  default     = "redis"
 }
 
 variable "memory_limit_in_gb" {
@@ -42,16 +44,19 @@ variable "memory_limit_in_gb" {
 variable "data_persistence" {
   description = "Rate of database data persistence "
   type        = string
+  default     = "none"
 }
 
 variable "throughput_measurement_by" {
   description = " Throughput measurement method"
   type        = string
+  default     = "operations-per-second"
 }
 
 variable "throughput_measurement_value" {
   description = "Throughput value (as applies to selected measurement method)"
   type        = string
+  default     = "10000"
 }
 
 variable "redis_db_password" {
@@ -77,14 +82,21 @@ variable "network_name" {
 variable "db_alert_name" {
   description = "Set DB Alert name"
   type        = string
+  default     = "dataset-size"
 }
 
 variable "db_alert_value" {
   description = "Set DB Alert value"
   type        = string
+  default     = "50"
 }
 
 variable "cloud_provider" {
-  description = "Set Cloid PRovider to use"
+  description = "Set Cloud Provider to use"
+  type        = string
+}
+
+variable "api_key" {
+  description = "Redis Cloud API Key"
   type        = string
 }
