@@ -5,7 +5,7 @@ locals {
 resource "rediscloud_subscription" "gcp-project" {
   name                          = var.project_subscription_name
   memory_storage                = var.memory_storage
-  persistent_storage_encryption = false
+  persistent_storage_encryption = var.persistent_storage_encryption
 
   cloud_provider {
     provider         = var.cloud_provider

@@ -70,6 +70,11 @@ variable "redis_db_password" {
   type        = string
 }
 
+variable "persistent_storage_encryption" {
+  type    = bool
+  default = true
+}
+
 variable "network_peering_name" {
   description = "The name of the Redis Enterprise Cloud network to be peered"
   type        = string
