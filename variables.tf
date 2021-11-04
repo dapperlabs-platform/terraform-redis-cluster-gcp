@@ -22,7 +22,7 @@ variable "networking_deployment_cidr" {
 variable "preferred_availability_zones" {
   description = "Support deployment on multiple availability zones within the selected region"
   type        = list(string)
-  default     = [""]
+  default     = []
 }
 
 variable "database_name" {
@@ -56,7 +56,7 @@ variable "throughput_measurement_by" {
 variable "throughput_measurement_value" {
   description = "Throughput value (as applies to selected measurement method)"
   type        = string
-  default     = "10000"
+  default     = "5000"
 }
 
 variable "redis_db_password" {
