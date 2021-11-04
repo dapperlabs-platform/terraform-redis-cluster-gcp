@@ -1,10 +1,10 @@
 locals {
-    count = var.cloud_provider == "GCP" ? 1 : 0
+  count = var.cloud_provider == "GCP" ? 1 : 0
 }
 
 resource "rediscloud_subscription" "gcp-project" {
-  name              = var.project_subscription_name
-  memory_storage    = var.memory_storage
+  name           = var.project_subscription_name
+  memory_storage = var.memory_storage
 
   cloud_provider {
     provider         = var.cloud_provider
@@ -21,7 +21,7 @@ resource "rediscloud_subscription" "gcp-project" {
     protocol                     = var.database_protocol
     memory_limit_in_gb           = var.memory_limit_in_gb
     data_persistence             = var.data_persistence
-    throughput_measurement_by    = var.throughput_measurement_by 
+    throughput_measurement_by    = var.throughput_measurement_by
     throughput_measurement_value = var.throughput_measurement_value
     password                     = var.redis_db_password
 
