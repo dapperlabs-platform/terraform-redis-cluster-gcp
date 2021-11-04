@@ -3,8 +3,9 @@ locals {
 }
 
 resource "rediscloud_subscription" "gcp-project" {
-  name           = var.project_subscription_name
-  memory_storage = var.memory_storage
+  name                          = var.project_subscription_name
+  memory_storage                = var.memory_storage
+  persistent_storage_encryption = false
 
   cloud_provider {
     provider         = var.cloud_provider
@@ -13,6 +14,7 @@ resource "rediscloud_subscription" "gcp-project" {
       region                       = var.region
       networking_deployment_cidr   = var.networking_deployment_cidr
       preferred_availability_zones = var.preferred_availability_zones
+      multiple_availability_zones  = var.multiple_availability_zones
     }
   }
 
@@ -30,6 +32,7 @@ resource "rediscloud_subscription" "gcp-project" {
       value = var.db_alert_value
     }
   }
+
 }
 
 # resource "rediscloud_subscription_peering" "gcp-project-peering" {

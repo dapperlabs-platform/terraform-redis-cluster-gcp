@@ -25,6 +25,12 @@ variable "preferred_availability_zones" {
   default     = []
 }
 
+variable "multiple_availability_zones" {
+  description = "Multiple AZs"
+  type        = bool
+  default     = true
+}
+
 variable "database_name" {
   description = "Identifier of the database created"
   type        = string
