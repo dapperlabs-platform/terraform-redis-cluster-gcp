@@ -11,7 +11,7 @@ Creates all resources (Subscription, Clusters, Databases and VPC peering) needed
 ## How to use this module?
 
 ```hcl
-module "confluent-kafka-cluster" {
+module "nfl-redis-cluster" {
     source = "https://github.com/dapperlabs-platform/terraform-redis-cluster-gcp?ref=0.9.4"
     project_subscription_name = "test-subscription"
     region = var.region

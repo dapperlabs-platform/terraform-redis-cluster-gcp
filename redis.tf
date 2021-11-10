@@ -1,6 +1,3 @@
-locals {
-  count = var.cloud_provider == "GCP" ? 1 : 0
-}
 
 resource "rediscloud_subscription" "subscription" {
   name                          = var.project_subscription_name
