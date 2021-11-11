@@ -114,6 +114,11 @@ variable "replication" {
 }
 
 variable "datasource" {
-  description = "Redis database public_endpoint to be used as datasource url"
+  description = "Redis database public_endpoint to be used as grafana datasource url"
+  type = string
+}
+
+variable "folder_name" {
+  description = "Redis database public_endpoint to be used as grafana datasource url"
   type = string
 }
