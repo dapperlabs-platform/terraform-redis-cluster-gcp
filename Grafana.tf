@@ -1,6 +1,6 @@
 data "rediscloud_database" "redis-subscription" {
   subscription_id = rediscloud_subscription.gcp-project.id
-  name = rediscloud_subscription.gcp-project.name
+  name            = rediscloud_subscription.gcp-project.name
 }
 
 resource "grafana_folder" "redis_cloud" {

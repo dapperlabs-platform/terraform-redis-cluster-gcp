@@ -23,6 +23,7 @@ resource "rediscloud_subscription" "subscription" {
     throughput_measurement_by    = var.throughput_measurement_by
     throughput_measurement_value = var.throughput_measurement_value
     password                     = var.redis_db_password
+    replication                  = var.replication
 
     alert {
       name  = var.db_alert_name
