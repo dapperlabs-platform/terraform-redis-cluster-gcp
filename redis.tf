@@ -32,21 +32,21 @@ resource "rediscloud_subscription" "subscription" {
 
 }
 
-resource "rediscloud_subscription_peering" "gcp-project-peering" {
-  subscription_id = rediscloud_subscription.gcp-project.id
-  provider_name = var.cloud_provider
-  gcp_project_id = var.project_id
-  gcp_network_name = var.network_name
-}
+# resource "rediscloud_subscription_peering" "gcp-project-peering" {
+#   subscription_id = rediscloud_subscription.gcp-project.id
+#   provider_name = var.cloud_provider
+#   gcp_project_id = var.project_id
+#   gcp_network_name = var.network_name
+# }
 
-resource "google_compute_network_peering" "gcp-network-peering" {
-  name         = var.network_peering_name
-  network      = var.network_name
-  peer_network = format(
-      "https://www.googleapis.com/compute/v1/projects/%s/global/networks/%s",
-      rediscloud_subscription_peering.gcp-project-peering.gcp_project_id, 
-      rediscloud_subscription_peering.gcp-project-peering.gcp_redis_network_name 
-    )
-} 
+# resource "google_compute_network_peering" "gcp-network-peering" {
+#   name         = var.network_peering_name
+#   network      = var.network_name
+#   peer_network = format(
+#       "https://www.googleapis.com/compute/v1/projects/%s/global/networks/%s",
+#       rediscloud_subscription_peering.gcp-project-peering.gcp_project_id, 
+#       rediscloud_subscription_peering.gcp-project-peering.gcp_redis_network_name 
+#     )
+# } 
 
 
