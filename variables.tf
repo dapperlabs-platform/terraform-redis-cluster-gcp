@@ -106,3 +106,9 @@ variable "cloud_provider" {
   description = "Set Cloud Provider to use"
   type        = string
 }
+
+variable "replication" {
+  description = "Databases replication. Default: ‘true’"
+  type        = bool
+  default = true
+}
