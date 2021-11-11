@@ -106,8 +106,3 @@ variable "cloud_provider" {
   description = "Set Cloud Provider to use"
   type        = string
 }
-
-variable "api_key" {
-  description = "Redis Cloud API Key"
-  type        = string
-}
