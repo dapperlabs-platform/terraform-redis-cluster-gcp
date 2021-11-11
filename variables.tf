@@ -115,5 +115,5 @@ variable "replication" {
 
 variable "datasource" {
   description = "Redis database public_endpoint to be used as datasource url"
-  type = "string"
+  type = string
 }
