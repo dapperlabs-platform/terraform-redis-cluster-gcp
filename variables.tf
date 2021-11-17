@@ -117,3 +117,9 @@ variable "folder_name" {
   description = "Redis database public_endpoint to be used as grafana datasource url"
   type = string
 }
+
+variable "create_grafana_dashboards" {
+  description = "Whether to create grafana dashboards with default metric exporter panels"
+  type        = bool
+  default     = false
+}
