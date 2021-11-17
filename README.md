@@ -24,7 +24,6 @@ module "nfl-redis-cluster" {
     throughput_measurement_by = "operations-per-second"
     throughput_measurement_value = 10000
     redis_db_password = "<insert_secure_password_here>"
-    project_id = ""
     network_name = ""
     db_alert_name = "throughput-higher-than"
     db_alert_value = 40
@@ -67,7 +66,6 @@ In order to setup authentication with the Redis Enterprise Cloud provider a prog
 | throughput_measurement_value                                                                                                                                                                                                              | (Required) Throughput value (as applies to selected measurement method)                                                           | number |         |       |
 | redis_db_password                                                                                                                                                                                                        | (Required) Password used to access the database                                                                             | string |         |    |
 | network_peering_name                                                                                                                                                                                                               | The name of the Redis Enterprise Cloud network to be peered                                                                         | string   |         |  false   |
-| project_id                                                                                                                                                                                                                      | GCP Project ID                                                                      | string |         |   null   |
 | network_name                                                                                                                                                                                                                      | GCP Network name                                                                      | string |         |   null   |
 | db_alert_name                                                                                                                                                                                                                      | Set DB Alert name                                                                      | string |         |   null   |
 | db_alert_value                                                                                                                                                                                                                      | Set DB Alert value                                                                      | number |         |   null   |
