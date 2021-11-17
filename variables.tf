@@ -80,11 +80,6 @@ variable "network_peering_name" {
   type        = string
 }
 
-variable "project_id" {
-  description = "GCP Project ID"
-  type        = string
-}
-
 variable "network_name" {
   description = "GCP Project Network Name"
   type        = string
