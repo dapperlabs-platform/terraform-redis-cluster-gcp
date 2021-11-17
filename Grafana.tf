@@ -1,4 +1,5 @@
 resource "grafana_folder" "redis_cloud" {
+  count = var.create_grafana_dashboards ? 1 : 0
   title = "${var.folder_name} Redis Cloud"
 }
 
