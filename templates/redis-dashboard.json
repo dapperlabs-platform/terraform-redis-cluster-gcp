@@ -1,1851 +1,2993 @@
 {
-    "__inputs": [
-      {
-        "name": "DS_REDIS",
-        "label": "Redis",
-        "description": "Redis Data Source",
-        "type": "datasource",
-        "pluginId": "redis-datasource",
-        "pluginName": "Redis"
-      }
-    ],
-    "__requires": [
-      {
-        "type": "panel",
-        "id": "bargauge",
-        "name": "Bar gauge",
-        "version": ""
-      },
-      {
-        "type": "panel",
-        "id": "gauge",
-        "name": "Gauge",
-        "version": ""
-      },
-      {
-        "type": "grafana",
-        "id": "grafana",
-        "name": "Grafana",
-        "version": "7.1.4"
-      },
-      {
-        "type": "datasource",
-        "id": "redis-datasource",
-        "name": "Redis",
-        "version": "1.2.0"
-      },
-      {
-        "type": "panel",
-        "id": "stat",
-        "name": "Stat",
-        "version": ""
-      },
-      {
-        "type": "panel",
-        "id": "table",
-        "name": "Table",
-        "version": ""
-      }
-    ],
-    "annotations": {
-      "list": [
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS1",
+      "label": "Prometheus1",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "4.4.0-pre1"
+    },
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "singlestat",
+      "name": "Singlestat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 1,
+  "hideControls": false,
+  "id": null,
+  "links": [
+    {
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [
+        "RLEC"
+      ],
+      "targetBlank": true,
+      "type": "dashboards"
+    }
+  ],
+  "rows": [
+    {
+      "collapse": false,
+      "height": 174,
+      "panels": [
         {
-          "builtIn": 1,
-          "datasource": "-- Grafana --",
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "type": "dashboard"
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "${DS_PROMETHEUS1}",
+          "decimals": null,
+          "format": "short",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 5,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 2,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "count(count(redis_used_memory{cluster=\"$cluster\", node=\"$node\"}) by (bdb))",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "",
+              "metric": "",
+              "refId": "A",
+              "step": 14400
+            }
+          ],
+          "thresholds": "",
+          "title": "# BDBs",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "${DS_PROMETHEUS1}",
+          "decimals": null,
+          "format": "short",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": false
+          },
+          "id": 26,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 2,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "count(redis_used_memory{cluster=\"$cluster\", node=\"$node\", role=\"master\"})",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "",
+              "metric": "",
+              "refId": "A",
+              "step": 14400
+            }
+          ],
+          "thresholds": "",
+          "title": "# Master Shards",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "${DS_PROMETHEUS1}",
+          "decimals": null,
+          "format": "short",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": false
+          },
+          "id": 7,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 2,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "count(redis_used_memory{cluster=\"$cluster\", node=\"$node\", role=\"slave\"})",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "",
+              "metric": "",
+              "refId": "A",
+              "step": 14400
+            }
+          ],
+          "thresholds": "",
+          "title": "# Slave Shards",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(245, 54, 54, 0.9)"
+          ],
+          "datasource": "${DS_PROMETHEUS1}",
+          "decimals": 2,
+          "format": "percentunit",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": true,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 9,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 2,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "node_cpu_system{node=\"$node\",cluster=\"$cluster\"} + node_cpu_user{node=\"$node\",cluster=\"$cluster\"}",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "",
+              "metric": "",
+              "refId": "A",
+              "step": 7200
+            }
+          ],
+          "thresholds": "70,85",
+          "title": "CPU Utilization",
+          "type": "singlestat",
+          "valueFontSize": "70%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "${DS_PROMETHEUS1}",
+          "decimals": null,
+          "format": "bytes",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "id": 10,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "span": 2,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "node_available_memory{cluster=\"$cluster\",node=\"$node\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "refId": "A",
+              "step": 14400
+            }
+          ],
+          "thresholds": "",
+          "title": "Free RAM",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "content": "<b style=\"font-size: 20pt\">$version<b>",
+          "id": 14,
+          "links": [],
+          "mode": "html",
+          "span": 2,
+          "title": "Node version",
+          "type": "text"
         }
-      ]
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
     },
-    "description": "Predefined dashboard to observe any Redis database using Redis Data Source. Requires Grafana 7.1+.",
-    "editable": true,
-    "gnetId": 12776,
-    "graphTooltip": 0,
-    "id": null,
-    "links": [
+    {
+      "collapse": false,
+      "height": 312,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "decimals": 2,
+          "fill": 6,
+          "id": 3,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "/.*dmcproxy.*/",
+              "fill": 0,
+              "stack": false
+            },
+            {
+              "alias": "/.*shards.*/",
+              "fill": 0,
+              "stack": false
+            }
+          ],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": " node_cpu_user{cluster=\"$cluster\", node=\"$node\"} + node_cpu_system{cluster=\"$cluster\", node=\"$node\"}",
+              "format": "time_series",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "user+system",
+              "refId": "B",
+              "step": 600
+            },
+            {
+              "expr": "1- node_cpu_idle{cluster=\"$cluster\", node=\"$node\"} - node_cpu_system{cluster=\"$cluster\", node=\"$node\"} - node_cpu_user{cluster=\"$cluster\", node=\"$node\"} unless node_cpu_nice{cluster=\"$cluster\", node=\"$node\"}",
+              "format": "time_series",
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "other",
+              "refId": "A",
+              "step": 300
+            },
+            {
+              "expr": "node_cpu_steal{cluster=\"$cluster\", node=\"$node\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "steal",
+              "refId": "D",
+              "step": 600
+            },
+            {
+              "expr": "node_cpu_nice{cluster=\"$cluster\", node=\"$node\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "nice",
+              "refId": "E",
+              "step": 600
+            },
+            {
+              "expr": "node_cpu_irqs{cluster=\"$cluster\", node=\"$node\"}",
+              "format": "time_series",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "irqs",
+              "refId": "F",
+              "step": 600
+            },
+            {
+              "expr": "dmcproxy_process_cpu_usage_percent{cluster=\"$cluster\", node=\"$node\"}/100",
+              "format": "time_series",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "dmcproxy (100% = 1 core)",
+              "refId": "G",
+              "step": 600
+            },
+            {
+              "expr": " node_cpu_iowait{cluster=\"$cluster\", node=\"$node\"}",
+              "format": "time_series",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "iowait",
+              "refId": "C",
+              "step": 600
+            },
+            {
+              "expr": "sum(redis_process_cpu_usage_percent{cluster=\"$cluster\", node=\"$node\"}/100)",
+              "format": "time_series",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "shards (100% = 1 core)",
+              "refId": "H",
+              "step": 600
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "CPU Usage on node",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "percentunit",
+              "label": "percents",
+              "logBase": 1,
+              "max": "1.5",
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "percentunit",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 297,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "description": "display the egress and ingress traffic on the node's NIC",
+          "fill": 1,
+          "id": 4,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeat": null,
+          "seriesOverrides": [
+            {
+              "alias": "/Ingress.*/",
+              "yaxis": 2
+            }
+          ],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "node_ingress_bytes{cluster=\"$cluster\", node=\"$node\"}",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "Ingress for node {{node}}",
+              "metric": "",
+              "refId": "A",
+              "step": 1200
+            },
+            {
+              "expr": "node_egress_bytes{cluster=\"$cluster\", node=\"$node\"}",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "egress for node {{node}}",
+              "metric": "",
+              "refId": "B",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Node $node In/Out Traffic",
+          "tooltip": {
+            "shared": false,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "transparent": false,
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": [
+              "max"
+            ]
+          },
+          "yaxes": [
+            {
+              "format": "Bps",
+              "label": "Egress bytes/sec ",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "Bps",
+              "label": "Ingress bytes/sec ",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "description": "display the egress and ingress traffic on the node's NIC",
+          "fill": 1,
+          "id": 32,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "/Ingress.*/",
+              "yaxis": 2
+            }
+          ],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "node_total_req{cluster=\"$cluster\", node=\"$node\"}",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "Total requests for node {{node}}",
+              "metric": "",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Node $node req/sec",
+          "tooltip": {
+            "shared": false,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "transparent": false,
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": [
+              "max"
+            ]
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": "Egress bytes/sec ",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "Bps",
+              "label": "Ingress bytes/sec ",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 250,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 1,
+          "id": 12,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sort": "max",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "/Ingress.*/",
+              "yaxis": 2
+            }
+          ],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "topk(10, listener_egress_bytes{node=\"$node\", cluster=\"$cluster\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Egress listener {{proxy}} for {{bdb}}",
+              "refId": "A",
+              "step": 600
+            },
+            {
+              "expr": "topk(10, listener_ingress_bytes{node=\"$node\", cluster=\"$cluster\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Ingress listener {{proxy}} for {{bdb}}",
+              "refId": "B",
+              "step": 600
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Top 10 listeners Egress/Ingrees",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "Bps",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "Bps",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 1,
+          "id": 27,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "/.*max.*/",
+              "dashes": true,
+              "fill": 0
+            }
+          ],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "topk(5, listener_acc_latency{node=\"$node\", cluster=\"$cluster\"} / listener_total_started_res{node=\"$node\", cluster=\"$cluster\"})",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "listener {{proxy}}  bdb {{bdb}}",
+              "refId": "A",
+              "step": 600
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Avg listener latency for node:$node",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "s",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "Bps",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 325,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 1,
+          "id": 1,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "sort": "max",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "topk(10, redis_used_ram{cluster=\"$cluster\", node=\"$node\"} or redis_used_memory{cluster=\"$cluster\", node=\"$node\"})",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "redis:{{redis}}, bdb:{{bdb}},  role:{{role}}",
+              "metric": "",
+              "refId": "A",
+              "step": 1200
+            },
+            {
+              "expr": "dmcproxy_process_resident_memory_bytes{cluster=\"$cluster\", node=\"$node\"}",
+              "format": "time_series",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "dmcproxy",
+              "refId": "B",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Top 10 shards by used ram",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 1,
+          "id": 13,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": true,
+            "min": false,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "redis_used_memory{cluster=\"$cluster\", node=\"$node\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "redis:{{redis}}, bdb:{{bdb}},  role:{{role}}",
+              "metric": "redis_used_memory",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Size of shards on node (Ability for sorting like by size)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "BIGSTORE IOPS",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 322,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 1,
+          "id": 11,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "topk(10, listener_conns{cluster=\"$cluster\", node=\"$node\"})",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "listener {{proxy}} for  bdb {{bdb}}",
+              "metric": "",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Top 10 active listeners by connections",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 1,
+          "id": 17,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "topk(10, listener_total_req{cluster=\"$cluster\", node=\"$node\"})",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "listener {{proxy}} for  bdb {{bdb}}",
+              "metric": "",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Top 10 active listeners by requests",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "ops",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 243,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 1,
+          "id": 6,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": false,
+            "min": false,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "count(redis_used_memory{cluster=\"$cluster\", node=\"$node\"}) by (bdb)",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "bdb:{{bdb}}",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "#Shards per BDB",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 1,
+          "id": 8,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "node_available_memory{cluster=\"$cluster\",node=\"$node\"}",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "available memory",
+              "metric": "",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Available Memory",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 1,
+          "id": 29,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(redis_used_memory{cluster=\"$cluster\", node=\"$node\"})",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 2,
+              "legendFormat": "total shards memory",
+              "metric": "",
+              "refId": "A",
+              "step": 1200
+            },
+            {
+              "expr": "sum(redis_used_ram{cluster=\"$cluster\", node=\"$node\"})",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "total shards ram",
+              "metric": "",
+              "refId": "B",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "total shards memory",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 1,
+          "id": 30,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "active / allocated (defraggable)",
+              "dashes": true,
+              "yaxis": 2
+            },
+            {
+              "alias": "resident / active (purgable)",
+              "dashes": true,
+              "yaxis": 2
+            },
+            {
+              "alias": "active defrag running",
+              "dashes": true,
+              "yaxis": 2
+            },
+            {
+              "alias": "process rss / allocator rss",
+              "dashes": true,
+              "yaxis": 2
+            }
+          ],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "avg(redis_allocator_active{node=\"$node\",cluster=\"$cluster\"} / redis_allocator_allocated{node=\"$node\",cluster=\"$cluster\"}) - 1",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "active / allocated (defraggable)",
+              "metric": "",
+              "refId": "A",
+              "step": 1200
+            },
+            {
+              "expr": "avg(redis_allocator_resident{node=\"$node\",cluster=\"$cluster\"} / redis_allocator_active{node=\"$node\",cluster=\"$cluster\"}) - 1",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "resident / active (purgable)",
+              "metric": "",
+              "refId": "B",
+              "step": 1200
+            },
+            {
+              "expr": "sum(redis_allocator_active{node=\"$node\",cluster=\"$cluster\"} - redis_allocator_allocated{node=\"$node\",cluster=\"$cluster\"})",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "active - allocated (defraggable)",
+              "metric": "",
+              "refId": "C",
+              "step": 1200
+            },
+            {
+              "expr": "sum(redis_allocator_resident{node=\"$node\",cluster=\"$cluster\"} - redis_allocator_active{node=\"$node\",cluster=\"$cluster\"})",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "resident - active (purgable)",
+              "metric": "",
+              "refId": "D",
+              "step": 1200
+            },
+            {
+              "expr": "avg(redis_active_defrag_running{node=\"$node\",cluster=\"$cluster\"})/100",
+              "format": "time_series",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "active defrag running",
+              "refId": "E",
+              "step": 1200
+            },
+            {
+              "expr": "sum(redis_process_resident_memory_bytes{node=\"$node\",cluster=\"$cluster\"}) - sum(redis_allocator_resident{node=\"$node\",cluster=\"$cluster\"})",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "process rss - allocator rss",
+              "metric": "redis_process_resident_memory_bytes",
+              "refId": "F",
+              "step": 1200
+            },
+            {
+              "expr": "sum(redis_process_resident_memory_bytes{node=\"$node\",cluster=\"$cluster\"}) / sum(redis_allocator_resident{node=\"$node\",cluster=\"$cluster\"})",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "process rss / allocator rss",
+              "metric": "redis_process_resident_memory_bytes",
+              "refId": "G",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "fragmentation",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "percentunit",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 250,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 1,
+          "id": 16,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": false,
+            "show": true,
+            "sort": "max",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "(delta(redis_process_cpu_system_seconds_total{node=\"$node\",cluster=\"$cluster\"}[60s]) + delta(redis_process_cpu_user_seconds_total{node=\"$node\",cluster=\"$cluster\"}[60s]))/60*100",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "shard: {{redis}} role: {{role}} bdb: {{bdb}}",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Shard's CPU on Node",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "percent",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 1,
+          "id": 28,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "rate(dmcproxy_process_cpu_user_seconds_total{cluster=\"$cluster\", node=\"$node\"}[$aggregation])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "CPU User",
+              "metric": "",
+              "refId": "A",
+              "step": 1200
+            },
+            {
+              "expr": "rate(dmcproxy_process_cpu_system_seconds_total{cluster=\"$cluster\", node=\"$node\"}[$aggregation])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "CPU System",
+              "metric": "dmcproxy_process_cpu_system_seconds_total",
+              "refId": "B",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "DMC Proxy CPU Usage",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "percentunit",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "percentunit",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 6,
+          "id": 22,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "/.*cow.*/",
+              "fill": 0
+            },
+            {
+              "alias": "/.*mem.*/",
+              "fill": 8
+            }
+          ],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "redis_rdb_last_cow_size{node=\"$node\",cluster=\"$cluster\"}",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "shard last RDB cow - redis: {{redis}}",
+              "refId": "A",
+              "step": 1200
+            },
+            {
+              "expr": "redis_aof_last_cow_size{node=\"$node\",cluster=\"$cluster\"}",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "shard last AOF cow - redis: {{redis}}",
+              "refId": "B",
+              "step": 1200
+            },
+            {
+              "expr": "redis_mem_aof_buffer{node=\"$node\",cluster=\"$cluster\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "shard aofrw buffers - redis: {{redis}}",
+              "refId": "C",
+              "step": 1200
+            },
+            {
+              "expr": "redis_mem_clients_slaves{node=\"$node\",cluster=\"$cluster\"}",
+              "format": "time_series",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "shard salve buffers - redis: {{redis}}",
+              "refId": "D",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "fork memory",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 5,
+          "id": 25,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "redis_rdb_bgsave_in_progress{cluster=\"$cluster\", node=\"$node\"} !=0",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "BGSAVE {{redis}} bdb {{bdb}}",
+              "refId": "A",
+              "step": 1200
+            },
+            {
+              "expr": "redis_aof_rewrite_in_progress{cluster=\"$cluster\", node=\"$node\"}!=0",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "AOFRW {{redis}} bdb {{bdb}}",
+              "refId": "B",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "forks",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 5,
+          "id": 23,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "delta(redis_aof_rewrites{cluster=\"$cluster\", node=\"$node\"}[$aggregation]) !=0",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "Redis {{redis}} bdb {{bdb}}",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Shard AOF Rewrites / $aggregation",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 6,
+          "id": 24,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(delta(redis_aof_delayed_fsync{node=\"$node\",cluster=\"$cluster\"}[$aggregation]))",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "delayed fsync",
+              "refId": "A",
+              "step": 1200
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "delayed fsync - (events / $aggregation)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": true,
+      "height": 250,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 1,
+          "id": 20,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 3,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "node_flash_write_throughput{cluster=\"$cluster\", node=\"$node\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "node_flash_write_throughput on node:{{node}}",
+              "refId": "A",
+              "step": 240
+            },
+            {
+              "expr": "node_flash_read_throughput{cluster=\"$cluster\", node=\"$node\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "node_flash_read_throughput on node:{{node}}",
+              "refId": "B",
+              "step": 240
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Node BIGSTORE throughput",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 1,
+          "id": 18,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 3,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "node_flash_read_iops{cluster=\"$cluster\", node=\"$node\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "node_flash_read_iops on node:{{node}}",
+              "metric": "node_flash_read_iops",
+              "refId": "A",
+              "step": 240
+            },
+            {
+              "expr": "node_flash_write_iops{cluster=\"$cluster\", node=\"$node\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "node_flash_write_iops on node:{{node}}",
+              "refId": "B",
+              "step": 240
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Node BIGSTORE IOPS",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 1,
+          "id": 21,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 3,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "node_flash_write_time{cluster=\"$cluster\", node=\"$node\"} / 1000",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "node_flash_write_time on node:{{node}}",
+              "metric": "",
+              "refId": "A",
+              "step": 240
+            },
+            {
+              "expr": " node_flash_read_time {cluster=\"$cluster\", node=\"$node\"} / 1000",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "node_flash_read_time  on node:{{node}}",
+              "refId": "B",
+              "step": 240
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Node BIGSTORE wait time",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 1,
+          "id": 19,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 3,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "node_bigstore_kv_ops{cluster=\"$cluster\", node=\"$node\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "node_bigstore_kv_ops on node:{{node}}",
+              "metric": "",
+              "refId": "A",
+              "step": 240
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Node BIGSTORE KV",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROMETHEUS1}",
+          "fill": 1,
+          "id": 31,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 3,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(redis_used_disk{cluster=\"$cluster\", node=\"$node\"})",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "total used flash",
+              "metric": "",
+              "refId": "A",
+              "step": 240
+            },
+            {
+              "expr": "sum(redis_disk_allocation{cluster=\"$cluster\", node=\"$node\"})",
+              "format": "time_series",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "total flash allocation",
+              "refId": "B",
+              "step": 240
+            },
+            {
+              "expr": "node_bigstore_free{cluster=\"$cluster\", node=\"$node\"}",
+              "format": "time_series",
+              "hide": true,
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "free flash",
+              "refId": "C",
+              "step": 240
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Node used flash",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": true,
+      "title": "ROF metrics",
+      "titleSize": "h6"
+    }
+  ],
+  "schemaVersion": 14,
+  "style": "dark",
+  "tags": [
+    "RLEC"
+  ],
+  "templating": {
+    "list": [
       {
-        "icon": "external link",
+        "allValue": null,
+        "current": {},
+        "datasource": "${DS_PROMETHEUS1}",
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "cluster",
+        "options": [],
+        "query": "label_values(node_up,cluster)",
+        "refresh": 1,
+        "regex": "",
+        "sort": 0,
+        "tagValuesQuery": "",
         "tags": [],
-        "targetBlank": true,
-        "title": "Redis.io",
-        "type": "link",
-        "url": "https://redis.io/"
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "${DS_PROMETHEUS1}",
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "node",
+        "options": [],
+        "query": "label_values(node_up{cluster=\"$cluster\"}, node)",
+        "refresh": 1,
+        "regex": "",
+        "sort": 3,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "${DS_PROMETHEUS1}",
+        "hide": 2,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "version",
+        "options": [],
+        "query": "label_values(node_up{cluster=\"$cluster\",node=\"$node\"}, cnm_version)",
+        "refresh": 1,
+        "regex": "",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "auto": true,
+        "auto_count": 100,
+        "auto_min": "1m",
+        "current": {
+          "selected": true,
+          "text": "auto",
+          "value": "$__auto_interval"
+        },
+        "hide": 0,
+        "label": "interval aggregation",
+        "name": "aggregation",
+        "options": [
+          {
+            "selected": true,
+            "text": "auto",
+            "value": "$__auto_interval"
+          },
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "10m",
+            "value": "10m"
+          },
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "12h",
+            "value": "12h"
+          },
+          {
+            "selected": false,
+            "text": "1d",
+            "value": "1d"
+          },
+          {
+            "selected": false,
+            "text": "7d",
+            "value": "7d"
+          },
+          {
+            "selected": false,
+            "text": "14d",
+            "value": "14d"
+          },
+          {
+            "selected": false,
+            "text": "30d",
+            "value": "30d"
+          }
+        ],
+        "query": "1m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
+        "refresh": 2,
+        "type": "interval"
       }
+    ]
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
     ],
-    "panels": [
-      {
-        "collapsed": false,
-        "datasource": "${datasource}",
-        "gridPos": {
-          "h": 1,
-          "w": 24,
-          "x": 0,
-          "y": 0
-        },
-        "id": 56,
-        "panels": [],
-        "repeat": "redis",
-        "scopedVars": {
-          "redis": {
-            "selected": true,
-            "text": "Redis",
-            "value": "Redis"
-          }
-        },
-        "title": "Main",
-        "type": "row"
-      },
-      {
-        "datasource": "${datasource}",
-        "fieldConfig": {
-          "defaults": {
-            "custom": {
-              "align": null
-            },
-            "decimals": 0,
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "dark-green",
-                  "value": null
-                },
-                {
-                  "color": "dark-yellow",
-                  "value": 22000
-                },
-                {
-                  "color": "dark-red",
-                  "value": 25000
-                }
-              ]
-            },
-            "unit": "ops"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 3,
-          "x": 0,
-          "y": 1
-        },
-        "id": 24,
-        "options": {
-          "colorMode": "background",
-          "graphMode": "area",
-          "justifyMode": "center",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "/.*/",
-            "values": true
-          },
-          "textMode": "auto"
-        },
-        "pluginVersion": "7.1.4",
-        "scopedVars": {
-          "redis": {
-            "selected": true,
-            "text": "Redis",
-            "value": "Redis"
-          }
-        },
-        "targets": [
-          {
-            "command": "info",
-            "query": "",
-            "refId": "A",
-            "section": "stats",
-            "type": "command"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Ops/sec",
-        "transformations": [
-          {
-            "id": "filterFieldsByName",
-            "options": {
-              "include": {
-                "names": [
-                  "instantaneous_ops_per_sec"
-                ]
-              }
-            }
-          }
-        ],
-        "type": "stat"
-      },
-      {
-        "datasource": "${datasource}",
-        "fieldConfig": {
-          "defaults": {
-            "custom": {
-              "align": null
-            },
-            "decimals": 1,
-            "mappings": [],
-            "max": 11000,
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "dark-green",
-                  "value": null
-                },
-                {
-                  "color": "dark-yellow",
-                  "value": 8000
-                },
-                {
-                  "color": "dark-red",
-                  "value": 10000
-                }
-              ]
-            },
-            "unit": "KBs"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 6,
-          "w": 8,
-          "x": 3,
-          "y": 1
-        },
-        "id": 25,
-        "options": {
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "/.*/",
-            "values": true
-          },
-          "showThresholdLabels": false,
-          "showThresholdMarkers": true
-        },
-        "pluginVersion": "7.1.4",
-        "scopedVars": {
-          "redis": {
-            "selected": true,
-            "text": "Redis",
-            "value": "Redis"
-          }
-        },
-        "targets": [
-          {
-            "command": "info",
-            "query": "",
-            "refId": "A",
-            "section": "stats",
-            "type": "command"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Network",
-        "transformations": [
-          {
-            "id": "filterFieldsByName",
-            "options": {
-              "include": {
-                "names": [
-                  "instantaneous_input_kbps",
-                  "instantaneous_output_kbps"
-                ]
-              }
-            }
-          },
-          {
-            "id": "organize",
-            "options": {
-              "excludeByName": {},
-              "indexByName": {},
-              "renameByName": {
-                "instantaneous_input_kbps": "Input",
-                "instantaneous_output_kbps": "Output"
-              }
-            }
-          }
-        ],
-        "type": "gauge"
-      },
-      {
-        "datasource": "${datasource}",
-        "fieldConfig": {
-          "defaults": {
-            "custom": {
-              "align": null
-            },
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "dark-green",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "decbytes"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Used Memory"
-              },
-              "properties": [
-                {
-                  "id": "decimals",
-                  "value": 2
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Used Memory, Peak"
-              },
-              "properties": [
-                {
-                  "id": "decimals",
-                  "value": 2
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Used Memory, LUA"
-              },
-              "properties": [
-                {
-                  "id": "decimals",
-                  "value": 2
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Memory Limit"
-              },
-              "properties": [
-                {
-                  "id": "decimals",
-                  "value": 2
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Total System Memory"
-              },
-              "properties": [
-                {
-                  "id": "decimals",
-                  "value": 2
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 6,
-          "w": 10,
-          "x": 11,
-          "y": 1
-        },
-        "id": 8,
-        "options": {
-          "displayMode": "lcd",
-          "orientation": "horizontal",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "/.*/",
-            "values": true
-          },
-          "showUnfilled": true
-        },
-        "pluginVersion": "7.1.4",
-        "scopedVars": {
-          "redis": {
-            "selected": true,
-            "text": "Redis",
-            "value": "Redis"
-          }
-        },
-        "targets": [
-          {
-            "command": "info",
-            "query": "",
-            "refId": "A",
-            "section": "memory",
-            "type": "command"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Memory",
-        "transformations": [
-          {
-            "id": "filterFieldsByName",
-            "options": {
-              "include": {
-                "names": [
-                  "used_memory",
-                  "used_memory_peak",
-                  "total_system_memory",
-                  "maxmemory",
-                  "used_memory_lua"
-                ]
-              }
-            }
-          },
-          {
-            "id": "organize",
-            "options": {
-              "excludeByName": {},
-              "indexByName": {
-                "maxmemory": 3,
-                "total_system_memory": 4,
-                "used_memory": 0,
-                "used_memory_lua": 2,
-                "used_memory_peak": 1
-              },
-              "renameByName": {
-                "maxmemory": "Memory Limit",
-                "total_system_memory": "Total System Memory",
-                "used_memory": "Used Memory",
-                "used_memory_lua": "Used Memory, LUA",
-                "used_memory_peak": "Used Memory, Peak"
-              }
-            }
-          }
-        ],
-        "type": "bargauge"
-      },
-      {
-        "datasource": "${datasource}",
-        "fieldConfig": {
-          "defaults": {
-            "custom": {
-              "align": null
-            },
-            "decimals": 0,
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "dark-green",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "s"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 3,
-          "x": 21,
-          "y": 1
-        },
-        "id": 19,
-        "options": {
-          "colorMode": "background",
-          "graphMode": "area",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "/.*/",
-            "values": true
-          },
-          "textMode": "auto"
-        },
-        "pluginVersion": "7.1.4",
-        "scopedVars": {
-          "redis": {
-            "selected": true,
-            "text": "Redis",
-            "value": "Redis"
-          }
-        },
-        "targets": [
-          {
-            "command": "info",
-            "query": "",
-            "refId": "A",
-            "section": "server",
-            "type": "command"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Uptime",
-        "transformations": [
-          {
-            "id": "filterFieldsByName",
-            "options": {
-              "include": {
-                "names": [
-                  "uptime_in_seconds"
-                ]
-              }
-            }
-          }
-        ],
-        "type": "stat"
-      },
-      {
-        "datasource": "${datasource}",
-        "fieldConfig": {
-          "defaults": {
-            "custom": {},
-            "decimals": 0,
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "dark-blue",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "short"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 3,
-          "x": 0,
-          "y": 4
-        },
-        "id": 22,
-        "options": {
-          "colorMode": "background",
-          "graphMode": "area",
-          "justifyMode": "center",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "/.*/",
-            "values": true
-          },
-          "textMode": "auto"
-        },
-        "pluginVersion": "7.1.4",
-        "scopedVars": {
-          "redis": {
-            "selected": true,
-            "text": "Redis",
-            "value": "Redis"
-          }
-        },
-        "targets": [
-          {
-            "command": "info",
-            "query": "",
-            "refId": "A",
-            "section": "clients",
-            "type": "command"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Connected Clients",
-        "transformations": [
-          {
-            "id": "filterFieldsByName",
-            "options": {
-              "include": {
-                "names": [
-                  "connected_clients"
-                ]
-              }
-            }
-          }
-        ],
-        "type": "stat"
-      },
-      {
-        "datasource": "${datasource}",
-        "fieldConfig": {
-          "defaults": {
-            "custom": {
-              "align": null
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "dark-green",
-                  "value": null
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 3,
-          "x": 21,
-          "y": 4
-        },
-        "id": 6,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "area",
-          "justifyMode": "center",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "/.*/",
-            "values": true
-          },
-          "textMode": "auto"
-        },
-        "pluginVersion": "7.1.4",
-        "scopedVars": {
-          "redis": {
-            "selected": true,
-            "text": "Redis",
-            "value": "Redis"
-          }
-        },
-        "targets": [
-          {
-            "command": "info",
-            "query": "",
-            "refId": "A",
-            "section": "server",
-            "type": "command"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Version",
-        "transformations": [
-          {
-            "id": "filterFieldsByName",
-            "options": {
-              "include": {
-                "names": [
-                  "redis_version"
-                ]
-              }
-            }
-          }
-        ],
-        "type": "stat"
-      },
-      {
-        "datasource": "${datasource}",
-        "fieldConfig": {
-          "defaults": {
-            "custom": {
-              "align": null
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "dark-blue",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "short"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 3,
-          "x": 0,
-          "y": 7
-        },
-        "id": 2,
-        "options": {
-          "colorMode": "background",
-          "graphMode": "area",
-          "justifyMode": "center",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "/.*/",
-            "values": true
-          },
-          "textMode": "auto"
-        },
-        "pluginVersion": "7.1.4",
-        "scopedVars": {
-          "redis": {
-            "selected": true,
-            "text": "Redis",
-            "value": "Redis"
-          }
-        },
-        "targets": [
-          {
-            "query": "dbsize",
-            "refId": "A",
-            "type": "cli"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Number of Keys",
-        "type": "stat"
-      },
-      {
-        "datasource": "${datasource}",
-        "fieldConfig": {
-          "defaults": {
-            "custom": {
-              "align": null
-            },
-            "decimals": 0,
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "dark-green",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "short"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 8,
-          "x": 3,
-          "y": 7
-        },
-        "id": 36,
-        "options": {
-          "displayMode": "lcd",
-          "orientation": "horizontal",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "/.*/",
-            "values": true
-          },
-          "showUnfilled": true
-        },
-        "pluginVersion": "7.1.4",
-        "scopedVars": {
-          "redis": {
-            "selected": true,
-            "text": "Redis",
-            "value": "Redis"
-          }
-        },
-        "targets": [
-          {
-            "command": "info",
-            "query": "",
-            "refId": "A",
-            "section": "stats",
-            "type": "command"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Keys",
-        "transformations": [
-          {
-            "id": "filterFieldsByName",
-            "options": {
-              "include": {
-                "names": [
-                  "expired_keys",
-                  "evicted_keys"
-                ]
-              }
-            }
-          },
-          {
-            "id": "organize",
-            "options": {
-              "excludeByName": {},
-              "indexByName": {},
-              "renameByName": {
-                "evicted_keys": "Evicted",
-                "expired_keys": "Expired"
-              }
-            }
-          }
-        ],
-        "type": "bargauge"
-      },
-      {
-        "datasource": "${datasource}",
-        "fieldConfig": {
-          "defaults": {
-            "custom": {
-              "align": null
-            },
-            "decimals": 0,
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "dark-green",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "short"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 10,
-          "x": 11,
-          "y": 7
-        },
-        "id": 38,
-        "options": {
-          "displayMode": "lcd",
-          "orientation": "horizontal",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "/.*/",
-            "values": true
-          },
-          "showUnfilled": true
-        },
-        "pluginVersion": "7.1.4",
-        "scopedVars": {
-          "redis": {
-            "selected": true,
-            "text": "Redis",
-            "value": "Redis"
-          }
-        },
-        "targets": [
-          {
-            "command": "info",
-            "query": "",
-            "refId": "A",
-            "section": "stats",
-            "type": "command"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Keyspace",
-        "transformations": [
-          {
-            "id": "filterFieldsByName",
-            "options": {
-              "include": {
-                "names": [
-                  "keyspace_hits",
-                  "keyspace_misses"
-                ]
-              }
-            }
-          },
-          {
-            "id": "organize",
-            "options": {
-              "excludeByName": {},
-              "indexByName": {},
-              "renameByName": {
-                "keyspace_hits": "Hits",
-                "keyspace_misses": "Misses"
-              }
-            }
-          }
-        ],
-        "type": "bargauge"
-      },
-      {
-        "datasource": "${datasource}",
-        "fieldConfig": {
-          "defaults": {
-            "custom": {
-              "align": null
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "dark-green",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 3,
-          "x": 21,
-          "y": 7
-        },
-        "id": 34,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "area",
-          "justifyMode": "center",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "/.*/",
-            "values": true
-          },
-          "textMode": "auto"
-        },
-        "pluginVersion": "7.1.4",
-        "scopedVars": {
-          "redis": {
-            "selected": true,
-            "text": "Redis",
-            "value": "Redis"
-          }
-        },
-        "targets": [
-          {
-            "command": "info",
-            "query": "",
-            "refId": "A",
-            "section": "memory",
-            "type": "command"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Eviction Policy",
-        "transformations": [
-          {
-            "id": "filterFieldsByName",
-            "options": {
-              "include": {
-                "names": [
-                  "maxmemory_policy"
-                ]
-              }
-            }
-          }
-        ],
-        "type": "stat"
-      },
-      {
-        "collapsed": false,
-        "datasource": "${datasource}",
-        "gridPos": {
-          "h": 1,
-          "w": 24,
-          "x": 0,
-          "y": 10
-        },
-        "id": 32,
-        "panels": [],
-        "repeat": "redis",
-        "scopedVars": {
-          "redis": {
-            "selected": true,
-            "text": "Redis",
-            "value": "Redis"
-          }
-        },
-        "title": "Other",
-        "type": "row"
-      },
-      {
-        "datasource": "${datasource}",
-        "fieldConfig": {
-          "defaults": {
-            "custom": {
-              "align": null,
-              "displayMode": "color-text"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                }
-              ]
-            }
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Total duration"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 99
-                },
-                {
-                  "id": "unit",
-                  "value": "s"
-                },
-                {
-                  "id": "decimals",
-                  "value": 1
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Client"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 127
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Idle time"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 95
-                },
-                {
-                  "id": "unit",
-                  "value": "s"
-                },
-                {
-                  "id": "decimals",
-                  "value": 0
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 15,
-          "w": 6,
-          "x": 0,
-          "y": 11
-        },
-        "id": 4,
-        "options": {
-          "showHeader": true,
-          "sortBy": [
-            {
-              "desc": true,
-              "displayName": "Idle time"
-            }
-          ]
-        },
-        "pluginVersion": "7.1.4",
-        "scopedVars": {
-          "redis": {
-            "selected": true,
-            "text": "Redis",
-            "value": "Redis"
-          }
-        },
-        "targets": [
-          {
-            "command": "clientList",
-            "query": "",
-            "refId": "A",
-            "type": "command"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Client connections",
-        "transformations": [
-          {
-            "id": "filterFieldsByName",
-            "options": {
-              "include": {
-                "names": [
-                  "addr",
-                  "age",
-                  "idle",
-                  "cmd"
-                ]
-              }
-            }
-          },
-          {
-            "id": "organize",
-            "options": {
-              "excludeByName": {},
-              "indexByName": {},
-              "renameByName": {
-                "addr": "Client",
-                "age": "Total duration",
-                "cmd": "Last command",
-                "id": "Id",
-                "idle": "Idle time"
-              }
-            }
-          }
-        ],
-        "type": "table"
-      },
-      {
-        "datasource": "${datasource}",
-        "fieldConfig": {
-          "defaults": {
-            "custom": {
-              "align": null,
-              "displayMode": "color-text"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                }
-              ]
-            }
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Calls"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "short"
-                },
-                {
-                  "id": "decimals",
-                  "value": 1
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Number of calls"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "short"
-                },
-                {
-                  "id": "custom.width",
-                  "value": 127
-                },
-                {
-                  "id": "decimals",
-                  "value": 1
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Total Duration"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 127
-                },
-                {
-                  "id": "decimals",
-                  "value": 1
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Duration per call"
-              },
-              "properties": [
-                {
-                  "id": "decimals",
-                  "value": 1
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Command"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 115
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 15,
-          "w": 7,
-          "x": 6,
-          "y": 11
-        },
-        "id": 41,
-        "options": {
-          "showHeader": true,
-          "sortBy": [
-            {
-              "desc": true,
-              "displayName": "Total Duration"
-            }
-          ]
-        },
-        "pluginVersion": "7.1.4",
-        "scopedVars": {
-          "redis": {
-            "selected": true,
-            "text": "Redis",
-            "value": "Redis"
-          }
-        },
-        "targets": [
-          {
-            "command": "info",
-            "query": "",
-            "refId": "A",
-            "section": "commandstats",
-            "type": "command"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Command statistics",
-        "transformations": [
-          {
-            "id": "organize",
-            "options": {
-              "excludeByName": {},
-              "indexByName": {},
-              "renameByName": {
-                "Calls": "Number of calls",
-                "Command": "",
-                "Usec": "Total Duration",
-                "Usec_per_call": "Duration per call"
-              }
-            }
-          }
-        ],
-        "type": "table"
-      },
-      {
-        "datasource": "${datasource}",
-        "fieldConfig": {
-          "defaults": {
-            "custom": {
-              "align": null,
-              "displayMode": "color-text"
-            },
-            "mappings": [
-              {
-                "from": "",
-                "id": 0,
-                "operator": "",
-                "text": "",
-                "to": "",
-                "type": 1
-              }
-            ],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                }
-              ]
-            }
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Unique progressive identifier"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 205
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Timestamp"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 145
-                },
-                {
-                  "id": "unit",
-                  "value": "dateTimeFromNow"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Duration"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 92
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Command"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 1185
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 15,
-          "w": 11,
-          "x": 13,
-          "y": 11
-        },
-        "id": 11,
-        "options": {
-          "showHeader": true,
-          "sortBy": []
-        },
-        "pluginVersion": "7.1.4",
-        "scopedVars": {
-          "redis": {
-            "selected": true,
-            "text": "Redis",
-            "value": "Redis"
-          }
-        },
-        "targets": [
-          {
-            "command": "slowlogGet",
-            "query": "",
-            "refId": "A",
-            "type": "command"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Slow queries log",
-        "transformations": [
-          {
-            "id": "organize",
-            "options": {
-              "excludeByName": {
-                "Id": true,
-                "Timestamp": false
-              },
-              "indexByName": {
-                "Command": 4,
-                "Duration": 3,
-                "Id": 0,
-                "Timestamp": 1,
-                "Timestamp * 1000": 2
-              },
-              "renameByName": {
-                "Duration": "",
-                "Id": "Id",
-                "Timestamp * 1000": "Timestamp"
-              }
-            }
-          }
-        ],
-        "type": "table"
-      },
-      {
-        "collapsed": false,
-        "datasource": "${datasource}",
-        "gridPos": {
-          "h": 1,
-          "w": 24,
-          "x": 0,
-          "y": 26
-        },
-        "id": 58,
-        "panels": [],
-        "title": "Redis Cluster",
-        "type": "row"
-      },
-      {
-        "datasource": "${datasource}",
-        "fieldConfig": {
-          "defaults": {
-            "custom": {
-              "align": null
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 3,
-          "x": 0,
-          "y": 27
-        },
-        "id": 60,
-        "options": {
-          "colorMode": "background",
-          "graphMode": "area",
-          "justifyMode": "center",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "/.*/",
-            "values": true
-          },
-          "textMode": "auto"
-        },
-        "pluginVersion": "7.1.4",
-        "targets": [
-          {
-            "command": "clusterInfo",
-            "query": "",
-            "refId": "A",
-            "type": "command"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "State",
-        "transformations": [
-          {
-            "id": "filterFieldsByName",
-            "options": {
-              "include": {
-                "names": [
-                  "cluster_state"
-                ]
-              }
-            }
-          }
-        ],
-        "type": "stat"
-      },
-      {
-        "datasource": "${datasource}",
-        "fieldConfig": {
-          "defaults": {
-            "custom": {
-              "align": null
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 3,
-          "x": 3,
-          "y": 27
-        },
-        "id": 64,
-        "options": {
-          "colorMode": "background",
-          "graphMode": "area",
-          "justifyMode": "center",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "/.*/",
-            "values": true
-          },
-          "textMode": "auto"
-        },
-        "pluginVersion": "7.1.4",
-        "targets": [
-          {
-            "command": "info",
-            "query": "",
-            "refId": "A",
-            "section": "replication",
-            "type": "command"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Role",
-        "transformations": [
-          {
-            "id": "filterFieldsByName",
-            "options": {
-              "include": {
-                "names": [
-                  "role"
-                ]
-              }
-            }
-          }
-        ],
-        "type": "stat"
-      },
-      {
-        "datasource": "${datasource}",
-        "fieldConfig": {
-          "defaults": {
-            "custom": {
-              "align": null
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "dark-green",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "short"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 18,
-          "x": 6,
-          "y": 27
-        },
-        "id": 61,
-        "options": {
-          "displayMode": "lcd",
-          "orientation": "horizontal",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "/.*/",
-            "values": true
-          },
-          "showUnfilled": true
-        },
-        "pluginVersion": "7.1.4",
-        "targets": [
-          {
-            "command": "clusterInfo",
-            "query": "",
-            "refId": "A",
-            "type": "command"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "",
-        "transformations": [
-          {
-            "id": "filterFieldsByName",
-            "options": {
-              "include": {
-                "names": [
-                  "cluster_known_nodes",
-                  "cluster_size"
-                ]
-              }
-            }
-          },
-          {
-            "id": "organize",
-            "options": {
-              "excludeByName": {},
-              "indexByName": {},
-              "renameByName": {
-                "cluster_known_nodes": "Total number of known nodes",
-                "cluster_size": "Number of master nodes serving at least one hash slot"
-              }
-            }
-          }
-        ],
-        "type": "bargauge"
-      },
-      {
-        "datasource": "${datasource}",
-        "fieldConfig": {
-          "defaults": {
-            "custom": {
-              "align": null
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "dark-green",
-                  "value": null
-                }
-              ]
-            }
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Ping was sent"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "dateTimeFromNow"
-                },
-                {
-                  "id": "custom.width",
-                  "value": 200
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Pong was received"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "dateTimeFromNow"
-                },
-                {
-                  "id": "custom.width",
-                  "value": 186
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "State"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 120
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Flags"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 185
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Replica's Master"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 321
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Address"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 243
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 24,
-          "x": 0,
-          "y": 30
-        },
-        "id": 62,
-        "options": {
-          "showHeader": true,
-          "sortBy": [
-            {
-              "desc": false,
-              "displayName": "Flags"
-            }
-          ]
-        },
-        "pluginVersion": "7.1.4",
-        "targets": [
-          {
-            "command": "clusterNodes",
-            "query": "",
-            "refId": "A",
-            "type": "command"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Nodes",
-        "transformations": [
-          {
-            "id": "organize",
-            "options": {
-              "excludeByName": {
-                "Epoch": true
-              },
-              "indexByName": {},
-              "renameByName": {
-                "Address": "",
-                "Id": "",
-                "Master": "Replica's Master",
-                "Ping": "Ping was sent",
-                "Pong": "Pong was received",
-                "Slot": "Hash slot number or range"
-              }
-            }
-          }
-        ],
-        "type": "table"
-      }
-    ],
-    "refresh": "5s",
-    "schemaVersion": 26,
-    "style": "dark",
-    "tags": [
-      "redis"
-    ],
-    "templating": {
-      "list": []
-    },
-    "time": {
-      "from": "now-6h",
-      "to": "now"
-    },
-    "timepicker": {
-      "refresh_intervals": [
-        "10s",
-        "30s",
-        "1m",
-        "5m",
-        "15m",
-        "30m",
-        "1h",
-        "2h",
-        "1d"
-      ]
-    },
-    "timezone": "",
-    "title": "Redis",
-    "uid": "RpSjVqWMz",
-    "version": 3
-  }
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "utc",
+  "title": "Redis Cloud Node Dashboard",
+  "version": 25
+}

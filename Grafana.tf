@@ -7,7 +7,7 @@ resource "grafana_dashboard" "redis_cloud_dashboard" {
   config_json = templatefile(
     "${path.module}/templates/redis-dashboard.json",
     {
-      datasource = var.datasource
+      DS_PROMETHEUS1 = var.datasource
     }
   )
 }
