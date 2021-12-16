@@ -3,6 +3,16 @@ variable "project_subscription_name" {
   type        = string
 }
 
+variable "product_name" {
+  description = "Product name so we can group dashboards together"
+  type        = string
+}
+
+variable "environment" {
+  description = "Application environment that uses the cluster"
+  type        = string
+}
+
 variable "memory_storage" {
   description = "Memory storage preference: either ram or a combination of ram-and-flash"
   type        = string
@@ -105,17 +115,17 @@ variable "cloud_provider" {
 variable "replication" {
   description = "Databases replication. Default: ‘true’"
   type        = bool
-  default = true
+  default     = true
 }
 
 variable "datasource" {
   description = "Redis database public_endpoint to be used as grafana datasource url"
-  type = string
+  type        = string
 }
 
 variable "folder_name" {
   description = "Redis database public_endpoint to be used as grafana datasource url"
-  type = string
+  type        = string
 }
 
 variable "create_grafana_dashboards" {

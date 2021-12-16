@@ -4,12 +4,14 @@ resource "grafana_folder" "redis_cloud" {
 }
 
 resource "grafana_dashboard" "redis_cloud_dashboard" {
-  count = var.create_grafana_dashboards ? 1 : 0
+  count  = var.create_grafana_dashboards ? 1 : 0
   folder = grafana_folder.redis_cloud[0].id
   config_json = templatefile(
     "${path.module}/templates/redis-dashboard.json",
     {
-      DS_PROMETHEUS1 = var.datasource
+      DS_PROMETHEUS1      = var.datasource
+      ENVIRONMENT_REPLACE = var.environment
+      PRODUCT_REPLACE     = var.product_name
     }
   )
 }
