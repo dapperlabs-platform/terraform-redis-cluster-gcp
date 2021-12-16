@@ -55,9 +55,9 @@
       "includeVars": true,
       "keepTime": true,
       "tags": [
-        "RLEC"
+        "${PRODUCT_REPLACE}-${ENVIRONMENT_REPLACE}"
       ],
-      "targetBlank": true,
+      "targetBlank": false,
       "type": "dashboards"
     }
   ],
@@ -2819,7 +2819,7 @@
   "schemaVersion": 14,
   "style": "dark",
   "tags": [
-    "RLEC"
+    "${PRODUCT_REPLACE}-${ENVIRONMENT_REPLACE}"
   ],
   "templating": {
     "list": [
@@ -2988,6 +2988,6 @@
     ]
   },
   "timezone": "utc",
-  "title": "Redis Cloud Node Dashboard",
+  "title": "Redis Node",
   "version": 25
 }

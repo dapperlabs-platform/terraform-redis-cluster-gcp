@@ -28,6 +28,8 @@ module "nfl-redis-cluster" {
     db_alert_name = "throughput-higher-than"
     db_alert_value = 40
     cloud_provider = "GCP"
+    product_name = "product-name-goes-here"
+    environment = "staging"
 }
 
 ```
