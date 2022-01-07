@@ -12,7 +12,7 @@ Creates all resources (Subscription, Clusters, Databases and VPC peering) needed
 
 ```hcl
 module "nfl-redis-cluster" {
-    source = "https://github.com/dapperlabs-platform/terraform-redis-cluster-gcp?ref=0.9.4"
+    source = "github.com/dapperlabs-platform/terraform-redis-cluster-gcp.git?ref=vX.Y.Z"
     project_subscription_name = "test-subscription"
     region = var.region
     networking_deployment_cidr = var.cidr
