@@ -67,14 +67,11 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_cloud_provider"></a> [cloud\_provider](#input\_cloud\_provider) | Set Cloud Provider to use | `string` | n/a | yes |
-| <a name="input_create_grafana_dashboards"></a> [create\_grafana\_dashboards](#input\_create\_grafana\_dashboards) | Whether to create grafana dashboards with default metric exporter panels | `bool` | `false` | no |
 | <a name="input_data_persistence"></a> [data\_persistence](#input\_data\_persistence) | Rate of database data persistence | `string` | `"none"` | no |
 | <a name="input_database_name"></a> [database\_name](#input\_database\_name) | Identifier of the database created | `string` | n/a | yes |
 | <a name="input_database_protocol"></a> [database\_protocol](#input\_database\_protocol) | The protocol that will be used to access the database | `string` | `"redis"` | no |
-| <a name="input_datasource"></a> [datasource](#input\_datasource) | Redis database public\_endpoint to be used as grafana datasource url | `string` | n/a | yes |
 | <a name="input_db_alert_name"></a> [db\_alert\_name](#input\_db\_alert\_name) | Set DB Alert name | `string` | `"dataset-size"` | no |
 | <a name="input_db_alert_value"></a> [db\_alert\_value](#input\_db\_alert\_value) | Set DB Alert value | `string` | `"50"` | no |
-| <a name="input_folder_name"></a> [folder\_name](#input\_folder\_name) | Redis database public\_endpoint to be used as grafana datasource url | `string` | n/a | yes |
 | <a name="input_memory_limit_in_gb"></a> [memory\_limit\_in\_gb](#input\_memory\_limit\_in\_gb) | Maximum memory usage for this specific database | `number` | n/a | yes |
 | <a name="input_memory_storage"></a> [memory\_storage](#input\_memory\_storage) | Memory storage preference: either ram or a combination of ram-and-flash | `string` | `"ram"` | no |
 | <a name="input_multiple_availability_zones"></a> [multiple\_availability\_zones](#input\_multiple\_availability\_zones) | Multiple AZs | `bool` | `true` | no |
