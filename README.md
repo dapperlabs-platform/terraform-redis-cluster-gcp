@@ -6,13 +6,13 @@ https://registry.terraform.io/providers/RedisLabs/rediscloud/latest
 
 ## What does this do?
 
-Creates all resources (Subscription, Clusters, Databases and VPC peering) needed to provison a redis enterprise cluster 
+Creates all resources (Subscription, Clusters, Databases and VPC peering) needed to provison a redis enterprise cluster
 
 ## How to use this module?
 
 ```hcl
 module "nfl-redis-cluster" {
-    source = "https://github.com/dapperlabs-platform/terraform-redis-cluster-gcp?ref=0.9.4"
+    source = "github.com/dapperlabs-platform/terraform-redis-cluster-gcp.git?ref=vX.Y.Z"
     project_subscription_name = "test-subscription"
     region = var.region
     networking_deployment_cidr = var.cidr
@@ -24,12 +24,10 @@ module "nfl-redis-cluster" {
     throughput_measurement_by = "operations-per-second"
     throughput_measurement_value = 10000
     redis_db_password = "<insert_secure_password_here>"
-    network_name = ""
     db_alert_name = "throughput-higher-than"
     db_alert_value = 40
     cloud_provider = "GCP"
 }
-
 ```
 
 ## Resources created
@@ -44,30 +42,49 @@ In order to setup authentication with the Redis Enterprise Cloud provider a prog
 
 ## Requirements
 
-- Terraform >= 1.0.0
-- grafana/grafana >= 1.14.0
-- redis >= 0.2.4
+| Name | Version |
+|------|---------|
+| <a name="requirement_rediscloud"></a> [rediscloud](#requirement\_rediscloud) | >= 0.2.4 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_rediscloud"></a> [rediscloud](#provider\_rediscloud) | 0.2.4 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [rediscloud_subscription.subscription](https://registry.terraform.io/providers/RedisLabs/rediscloud/latest/docs/resources/subscription) | resource |
 
 ## Inputs
 
-| Name                                                                                                                                                                                                                                    | Description                                                                                                  | Type   | Default | Required |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ------ | ------- | :------: |
-| project_subscription_name                                                                                                                                                                                                                                    | A meaningful name to identify the Subscription.                     | string |         |    x     |
-| memory_storage                                                                                                                                                                                                                             | (Required) Memory storage preference: either ram or a combination of ram-and-flash                                                               | string |         |    x     |
-| region                                                                                                                                                                                                                              | GCP region in which to deploy the cluster. | string |         |    x     |
-| networking_deployment_cidr                                                                                                                                                                                                                            | Deployment CIDR mask                                                                            | string | LOW     |          |
-| preferred_availability_zones                                                                                                                                                                                                                                 | Support deployment on multiple availability zones within the selected region                                                                                            | list(string) | 5000    |          |
-| multiple_availability_zones                                                                                                                                                                                                                          | Support deployment on multiple availability zones within the selected region. Default: ‘false’                                                                                  | bool | 100     |          |
-| database_name                                                                                                                                                                                                                         | A meaningful name to identify the database                                                                                  | string | 100     |          |
-| database_protocol                                                                                                                                                                                                                            | The protocol that will be used to access the database, (either ‘redis’ or 'memcached’) Default: ‘redis’                                                                                                 | string | BASIC   |          |
-| memory_limit_in_gb                                                                                                                                                                                                                        | (Required) Maximum memory usage for this specific database                                                           | number | GCP     |          |
-| data_persistence                                                                                                                                                                                                                                  |  Rate of database data persistence (in persistent storage). Default: ‘none’                                                                                     |
-| throughput_measurement_by                                                                                                                                                                                                                 | (Required) Throughput measurement method, (either ‘number-of-shards’ or ‘operations-per-second’)                                                                         | string   |         |  false   |
-| throughput_measurement_value                                                                                                                                                                                                              | (Required) Throughput value (as applies to selected measurement method)                                                           | number |         |       |
-| redis_db_password                                                                                                                                                                                                        | (Required) Password used to access the database                                                                             | string |         |    |
-| network_peering_name                                                                                                                                                                                                               | The name of the Redis Enterprise Cloud network to be peered                                                                         | string   |         |  false   |
-| network_name                                                                                                                                                                                                                      | GCP Network name                                                                      | string |         |   null   |
-| db_alert_name                                                                                                                                                                                                                      | Set DB Alert name                                                                      | string |         |   null   |
-| db_alert_value                                                                                                                                                                                                                      | Set DB Alert value                                                                      | number |         |   null   |
-| cloud_provider                                                                                                                                                                                                                      | Set cloud provider, default is GCP                                                                      | string |         |   null   |
-| api_key                                                                                                                                                                                                                      | Set API key for redis, read the #Additional Information section on how to generate this key                                                                     | string |         |   null   |
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_cloud_provider"></a> [cloud\_provider](#input\_cloud\_provider) | Set Cloud Provider to use | `string` | n/a | yes |
+| <a name="input_data_persistence"></a> [data\_persistence](#input\_data\_persistence) | Rate of database data persistence | `string` | `"none"` | no |
+| <a name="input_database_name"></a> [database\_name](#input\_database\_name) | Identifier of the database created | `string` | n/a | yes |
+| <a name="input_database_protocol"></a> [database\_protocol](#input\_database\_protocol) | The protocol that will be used to access the database | `string` | `"redis"` | no |
+| <a name="input_db_alert_name"></a> [db\_alert\_name](#input\_db\_alert\_name) | Set DB Alert name | `string` | `"dataset-size"` | no |
+| <a name="input_db_alert_value"></a> [db\_alert\_value](#input\_db\_alert\_value) | Set DB Alert value | `string` | `"50"` | no |
+| <a name="input_memory_limit_in_gb"></a> [memory\_limit\_in\_gb](#input\_memory\_limit\_in\_gb) | Maximum memory usage for this specific database | `number` | n/a | yes |
+| <a name="input_memory_storage"></a> [memory\_storage](#input\_memory\_storage) | Memory storage preference: either ram or a combination of ram-and-flash | `string` | `"ram"` | no |
+| <a name="input_multiple_availability_zones"></a> [multiple\_availability\_zones](#input\_multiple\_availability\_zones) | Multiple AZs | `bool` | `true` | no |
+| <a name="input_networking_deployment_cidr"></a> [networking\_deployment\_cidr](#input\_networking\_deployment\_cidr) | Deployment CIDR mask. | `string` | n/a | yes |
+| <a name="input_persistent_storage_encryption"></a> [persistent\_storage\_encryption](#input\_persistent\_storage\_encryption) | n/a | `bool` | `true` | no |
+| <a name="input_preferred_availability_zones"></a> [preferred\_availability\_zones](#input\_preferred\_availability\_zones) | Support deployment on multiple availability zones within the selected region | `list(string)` | `[]` | no |
+| <a name="input_project_subscription_name"></a> [project\_subscription\_name](#input\_project\_subscription\_name) | Redis Enterprise subscription name | `string` | n/a | yes |
+| <a name="input_redis_db_password"></a> [redis\_db\_password](#input\_redis\_db\_password) | Password used to access the database | `string` | n/a | yes |
+| <a name="input_region"></a> [region](#input\_region) | GCP Region | `string` | n/a | yes |
+| <a name="input_replication"></a> [replication](#input\_replication) | Databases replication. Default: ‘true’ | `bool` | `true` | no |
+| <a name="input_throughput_measurement_by"></a> [throughput\_measurement\_by](#input\_throughput\_measurement\_by) | Throughput measurement method | `string` | `"operations-per-second"` | no |
+| <a name="input_throughput_measurement_value"></a> [throughput\_measurement\_value](#input\_throughput\_measurement\_value) | Throughput value (as applies to selected measurement method) | `string` | `"5000"` | no |
+
+## Outputs
+
+No outputs.

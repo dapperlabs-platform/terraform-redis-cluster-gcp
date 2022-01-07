@@ -75,16 +75,6 @@ variable "persistent_storage_encryption" {
   default = true
 }
 
-variable "network_peering_name" {
-  description = "The name of the Redis Enterprise Cloud network to be peered"
-  type        = string
-}
-
-variable "network_name" {
-  description = "GCP Project Network Name"
-  type        = string
-}
-
 variable "db_alert_name" {
   description = "Set DB Alert name"
   type        = string
@@ -105,21 +95,5 @@ variable "cloud_provider" {
 variable "replication" {
   description = "Databases replication. Default: ‘true’"
   type        = bool
-  default = true
-}
-
-variable "datasource" {
-  description = "Redis database public_endpoint to be used as grafana datasource url"
-  type = string
-}
-
-variable "folder_name" {
-  description = "Redis database public_endpoint to be used as grafana datasource url"
-  type = string
-}
-
-variable "create_grafana_dashboards" {
-  description = "Whether to create grafana dashboards with default metric exporter panels"
-  type        = bool
-  default     = false
+  default     = true
 }
