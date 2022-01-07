@@ -75,16 +75,6 @@ variable "persistent_storage_encryption" {
   default = true
 }
 
-variable "network_peering_name" {
-  description = "The name of the Redis Enterprise Cloud network to be peered"
-  type        = string
-}
-
-variable "network_name" {
-  description = "GCP Project Network Name"
-  type        = string
-}
-
 variable "db_alert_name" {
   description = "Set DB Alert name"
   type        = string

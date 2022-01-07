@@ -1,0 +1,41 @@
+# Redis Enterprise Cluster
+
+https://www.redislabs.com/
+
+https://registry.terraform.io/providers/RedisLabs/rediscloud/latest
+
+## What does this do?
+
+Creates all resources (Subscription, Clusters, Databases and VPC peering) needed to provison a redis enterprise cluster 
+
+## How to use this module?
+
+```hcl
+module "nfl-redis-cluster" {
+    source = "https://github.com/dapperlabs-platform/terraform-redis-cluster-gcp?ref=0.9.4"
+    project_subscription_name = "test-subscription"
+    region = var.region
+    networking_deployment_cidr = var.cidr
+    preferred_availability_zones = var.availability_zones
+    database_name = "test-db"
+    database_protocol = "redis"
+    memory_limit_in_gb = 2
+    data_persistence = "none"
+    throughput_measurement_by = "operations-per-second"
+    throughput_measurement_value = 10000
+    redis_db_password = "<insert_secure_password_here>"
+    db_alert_name = "throughput-higher-than"
+    db_alert_value = 40
+    cloud_provider = "GCP"
+}
+```
+
+## Resources created
+
+- Redis Cloud Subscription
+- Subscription Peering
+- Redis Database
+
+## Additional information
+
+In order to setup authentication with the Redis Enterprise Cloud provider a programmatic API key must be generated for Redis Enterprise Cloud. The Redis Enterprise Cloud documentation contains the most up-to-date instructions for creating and managing your key(s) and IP access.
