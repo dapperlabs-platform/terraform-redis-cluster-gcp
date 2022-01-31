@@ -75,6 +75,11 @@ variable "persistent_storage_encryption" {
   default = true
 }
 
+variable "enable_tls" {
+  type    = bool
+  default = true
+}
+
 variable "db_alert_name" {
   description = "Set DB Alert name"
   type        = string

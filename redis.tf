@@ -3,6 +3,7 @@ resource "rediscloud_subscription" "subscription" {
   name                          = var.project_subscription_name
   memory_storage                = var.memory_storage
   persistent_storage_encryption = var.persistent_storage_encryption
+  enable_tls = var.enable_tls
 
   cloud_provider {
     provider         = var.cloud_provider
