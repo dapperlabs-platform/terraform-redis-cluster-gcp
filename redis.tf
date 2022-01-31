@@ -3,7 +3,6 @@ resource "rediscloud_subscription" "subscription" {
   name                          = var.project_subscription_name
   memory_storage                = var.memory_storage
   persistent_storage_encryption = var.persistent_storage_encryption
-  enable_tls                    = var.enable_tls
 
   cloud_provider {
     provider         = var.cloud_provider
@@ -25,6 +24,7 @@ resource "rediscloud_subscription" "subscription" {
     throughput_measurement_value = var.throughput_measurement_value
     password                     = var.redis_db_password
     replication                  = var.replication
+    enable_tls                   = var.enable_tls
 
     alert {
       name  = var.db_alert_name
