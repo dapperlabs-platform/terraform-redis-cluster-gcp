@@ -1,9 +1,9 @@
-output "database_private_endpoint" {
+output "private_endpoint" {
   description = "Private endpoint url for the redis cluster"
-  value       = rediscloud_subscription.subscription.database[0].database.private_endpoint
+  value       = rediscloud_subscription.subscription.database.*.private_endpoint[0]
 }
 
-output "database_pubilc_endpoint" {
+output "pubilc_endpoint" {
   description = "Private endpoint url for the redis cluster"
-  value       = rediscloud_subscription.subscription.database[0].database.public_endpoint
+  value       = rediscloud_subscription.subscription.database.*.public_endpoint[0]
 }
