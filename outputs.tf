@@ -10,5 +10,5 @@ output "public_endpoint" {
 
 output "subscription_id" {
   description = "Subscription identifier for the redis cluster"
-  value       = rediscloud_subscription.id
+  value       = rediscloud_subscription.subscription.id
 }
