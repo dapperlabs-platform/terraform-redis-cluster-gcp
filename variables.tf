@@ -70,10 +70,11 @@ variable "redis_db_password" {
   type        = string
 }
 
-variable "persistent_storage_encryption" {
-  type    = bool
-  default = true
-}
+# this setting is irrelevant in GCP and can actually cause problems
+# variable "persistent_storage_encryption" {
+#   type    = bool
+#   default = true
+# }
 
 variable "enable_tls" {
   type    = bool
@@ -90,11 +91,6 @@ variable "db_alert_value" {
   description = "Set DB Alert value"
   type        = string
   default     = "50"
-}
-
-variable "cloud_provider" {
-  description = "Set Cloud Provider to use"
-  type        = string
 }
 
 variable "replication" {

@@ -6,3 +6,7 @@ terraform {
     }
   }
 }
+
+locals {
+  cloud_provider = "GCP"
+}
