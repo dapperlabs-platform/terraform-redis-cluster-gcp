@@ -1,11 +1,10 @@
 
 resource "rediscloud_subscription" "subscription" {
-  name                          = var.project_subscription_name
-  memory_storage                = var.memory_storage
-  persistent_storage_encryption = var.persistent_storage_encryption
+  name           = var.project_subscription_name
+  memory_storage = var.memory_storage
 
   cloud_provider {
-    provider         = var.cloud_provider
+    provider         = local.cloud_provider
     cloud_account_id = 1
     region {
       region                       = var.region
@@ -31,7 +30,4 @@ resource "rediscloud_subscription" "subscription" {
       value = var.db_alert_value
     }
   }
-
 }
-
-
