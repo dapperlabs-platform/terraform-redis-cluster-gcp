@@ -30,4 +30,10 @@ resource "rediscloud_subscription" "subscription" {
       value = var.db_alert_value
     }
   }
+
+  lifecycle {
+    ignore_changes = [
+      persistent_storage_encryption # this setting is irrelevant in GCP, and this resource always returns `false` even though it's `true`
+    ]
+  }
 }
