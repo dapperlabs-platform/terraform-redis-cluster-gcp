@@ -14,21 +14,12 @@ resource "rediscloud_subscription" "subscription" {
     }
   }
 
-  database {
-    name                         = var.database_name
-    protocol                     = var.database_protocol
+  creation_plan {
     memory_limit_in_gb           = var.memory_limit_in_gb
-    data_persistence             = var.data_persistence
+    quantity                     = 1
+    replication                  = var.replication
     throughput_measurement_by    = var.throughput_measurement_by
     throughput_measurement_value = var.throughput_measurement_value
-    password                     = var.redis_db_password
-    replication                  = var.replication
-    enable_tls                   = var.enable_tls
-
-    alert {
-      name  = var.db_alert_name
-      value = var.db_alert_value
-    }
   }
 
   lifecycle {
@@ -36,4 +27,24 @@ resource "rediscloud_subscription" "subscription" {
       persistent_storage_encryption # this setting is irrelevant in GCP, and this resource always returns `false` even though it's `true`
     ]
   }
+}
+
+resource "rediscloud_subscription_database" "database" {
+  subscription_id              = rediscloud_subscription.subscription.id
+  name                         = var.database_name
+  protocol                     = var.database_protocol
+  memory_limit_in_gb           = var.memory_limit_in_gb
+  data_persistence             = var.data_persistence
+  throughput_measurement_by    = var.throughput_measurement_by
+  throughput_measurement_value = var.throughput_measurement_value
+  password                     = var.redis_db_password
+  replication                  = var.replication
+  enable_tls                   = var.enable_tls
+
+  alert {
+    name  = var.db_alert_name
+    value = var.db_alert_value
+  }
+
+  depends_on = [rediscloud_subscription.subscription]
 }
