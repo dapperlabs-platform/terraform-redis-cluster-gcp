@@ -22,11 +22,6 @@ resource "rediscloud_subscription" "subscription" {
     throughput_measurement_value = var.throughput_measurement_value
   }
 
-  lifecycle {
-    ignore_changes = [
-      persistent_storage_encryption # this setting is irrelevant in GCP, and this resource always returns `false` even though it's `true`
-    ]
-  }
 }
 
 resource "rediscloud_subscription_database" "database" {
