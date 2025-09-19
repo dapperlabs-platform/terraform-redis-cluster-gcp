@@ -15,7 +15,7 @@ resource "rediscloud_subscription" "subscription" {
   }
 
   creation_plan {
-    memory_limit_in_gb           = var.memory_limit_in_gb
+    dataset_size_in_gb           = var.dataset_size_in_gb
     quantity                     = 1
     replication                  = var.replication
     throughput_measurement_by    = var.throughput_measurement_by
