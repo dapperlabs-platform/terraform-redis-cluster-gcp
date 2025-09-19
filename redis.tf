@@ -22,6 +22,13 @@ resource "rediscloud_subscription" "subscription" {
     throughput_measurement_value = var.throughput_measurement_value
   }
 
+  lifecycle {
+    ignore_changes = [
+      customer_managed_key_deletion_grace_period,
+      customer_managed_key_enabled,
+    ]
+  }
+
 }
 
 resource "rediscloud_subscription_database" "database" {
