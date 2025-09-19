@@ -35,7 +35,7 @@ resource "rediscloud_subscription_database" "database" {
   subscription_id              = rediscloud_subscription.subscription.id
   name                         = var.database_name
   protocol                     = var.database_protocol
-  memory_limit_in_gb           = var.memory_limit_in_gb
+  dataset_size_in_gb           = var.dataset_size_in_gb
   data_persistence             = var.data_persistence
   throughput_measurement_by    = var.throughput_measurement_by
   throughput_measurement_value = var.throughput_measurement_value

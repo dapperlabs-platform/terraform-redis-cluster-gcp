@@ -48,7 +48,7 @@ variable "database_protocol" {
   default     = "redis"
 }
 
-variable "memory_limit_in_gb" {
+variable "dataset_size_in_gb" {
   description = "Maximum memory usage for this specific database "
   type        = number
 }
