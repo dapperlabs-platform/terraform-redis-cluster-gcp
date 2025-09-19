@@ -52,7 +52,7 @@ resource "rediscloud_subscription_database" "database" {
 
   lifecycle {
     ignore_changes = [
-      query_performance_factor
+      query_performance_factor,
     ]
   }
 }
