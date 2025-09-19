@@ -31,12 +31,6 @@ variable "multiple_availability_zones" {
   default     = true
 }
 
-variable "query_performance_factor" {
-  description = "Query performance factor"
-  type        = string
-  default     = ""
-}
-
 variable "database_name" {
   description = "Identifier of the database created"
   type        = string
