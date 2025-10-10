@@ -98,3 +98,9 @@ variable "replication" {
   type        = bool
   default     = true
 }
+
+variable "enable_default_public_network" {
+  description = "Enable public network access for the Redis subscription"
+  type        = bool
+  default     = false
+}

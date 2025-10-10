@@ -2,6 +2,7 @@
 resource "rediscloud_subscription" "subscription" {
   name           = var.project_subscription_name
   memory_storage = var.memory_storage
+  enable_default_public_network = var.enable_default_public_network
 
   cloud_provider {
     provider         = local.cloud_provider
