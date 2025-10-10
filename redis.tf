@@ -2,7 +2,6 @@
 resource "rediscloud_subscription" "subscription" {
   name           = var.project_subscription_name
   memory_storage = var.memory_storage
-  enable_default_public_network = var.enable_default_public_network
 
   cloud_provider {
     provider         = local.cloud_provider
@@ -43,6 +42,7 @@ resource "rediscloud_subscription_database" "database" {
   password                     = var.redis_db_password
   replication                  = var.replication
   enable_tls                   = var.enable_tls
+  source_ips                   = var.source_ips
 
   alert {
     name  = var.db_alert_name

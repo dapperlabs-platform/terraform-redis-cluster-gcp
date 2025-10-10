@@ -94,13 +94,13 @@ variable "db_alert_value" {
 }
 
 variable "replication" {
-  description = "Databases replication. Default: ‘true’"
+  description = "Databases replication. Default: 'true'"
   type        = bool
   default     = true
 }
 
-variable "enable_default_public_network" {
-  description = "Enable public network access for the Redis subscription"
-  type        = bool
-  default     = false
+variable "source_ips" {
+  description = "List of CIDR blocks allowed to access the database publicly. If empty, only private access is enabled."
+  type        = list(string)
+  default     = []
 }
