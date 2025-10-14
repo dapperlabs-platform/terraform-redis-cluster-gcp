@@ -42,6 +42,7 @@ resource "rediscloud_subscription_database" "database" {
   password                     = var.redis_db_password
   replication                  = var.replication
   enable_tls                   = var.enable_tls
+  source_ips                   = var.source_ips
 
   alert {
     name  = var.db_alert_name
