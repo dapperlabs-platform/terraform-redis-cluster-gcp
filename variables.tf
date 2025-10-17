@@ -102,5 +102,10 @@ variable "replication" {
 variable "source_ips" {
   description = "List of CIDR blocks allowed to access the database publicly. If empty, only private access is enabled."
   type        = list(string)
-  default     = []
+  default = [
+    "10.0.0.0/8",
+    "100.64.0.0/10",
+    "172.16.0.0/12",
+    "192.168.0.0/16",
+  ]
 }
