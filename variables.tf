@@ -115,5 +115,18 @@ variable "modules" {
   type = list(object({
     name = string
   }))
-  default = []
+  default = [
+    {
+      name = "RediSearch"
+    },
+    {
+      name = "RedisJSON"
+    },
+    {
+      name = "RedisTimeSeries"
+    },
+    {
+      name = "RedisBloom"
+    },
+  ]
 }
