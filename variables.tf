@@ -109,3 +109,11 @@ variable "source_ips" {
     "192.168.0.0/16",
   ]
 }
+
+variable "modules" {
+  description = "List of Redis modules to enable (e.g., RediSearch, RedisJSON, RedisTimeSeries, etc.)"
+  type = list(object({
+    name = string
+  }))
+  default = []
+}
