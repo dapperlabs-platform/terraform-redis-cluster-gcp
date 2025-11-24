@@ -49,12 +49,5 @@ resource "rediscloud_subscription_database" "database" {
     value = var.db_alert_value
   }
 
-  dynamic "modules" {
-    for_each = var.modules
-    content {
-      name = modules.value.name
-    }
-  }
-
   depends_on = [rediscloud_subscription.subscription]
 }
