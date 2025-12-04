@@ -50,4 +50,11 @@ resource "rediscloud_subscription_database" "database" {
   }
 
   depends_on = [rediscloud_subscription.subscription]
+
+  lifecycle {
+    ignore_changes = [
+      modules,
+      query_performance_factor
+    ]
+  }
 }
