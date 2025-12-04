@@ -22,3 +22,8 @@ output "service_id" {
   description = "Service identifier for private service connect"
   value       = rediscloud_subscription.subscription.id
 }
+
+output "connection_port" {
+  description = "Connection port for the private connection endopint"
+  value       = element(split(":", rediscloud_subscription_database.database.private_endpoint), 1)
+}
